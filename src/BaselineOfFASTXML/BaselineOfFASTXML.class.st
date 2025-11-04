@@ -38,6 +38,17 @@ BaselineOfFASTXML >> defineDependencies: spec [
 		project: 'FASTTool'
 		copyFrom: 'FAST'
 		with: [ spec loads: #( 'core' 'tools' ) ].
+		
+	spec for: #NeedsMoose do: [
+		spec baseline: 'Famix' with: [
+			spec
+				loads: #( 'Core' 'Basic' );
+				repository: 'github://moosetechnology/Famix:development/src' ] ].
+
+	spec baseline: 'TreeSitter' with: [
+		spec
+			loads: #( 'default' );
+			repository: 'github://Evref-BL/Pharo-Tree-Sitter:main/src' ]
 
 ]
 
