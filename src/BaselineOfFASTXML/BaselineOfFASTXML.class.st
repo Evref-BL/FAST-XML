@@ -33,7 +33,7 @@ BaselineOfFASTXML >> defineDependencies: spec [
 	spec baseline: 'FAST' with: [
 		spec
 			loads: #( 'default' );
-			repository: 'github://moosetechnology/FAST:v2/src' ].
+			repository: 'github://moosetechnology/FAST:v3/src' ].
 	spec
 		project: 'FASTTool'
 		copyFrom: 'FAST'
