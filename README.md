@@ -16,7 +16,7 @@ To load FASTXML in Pharo, execute the following in a Moose image:
 ```smalltalk  
 Metacello new  
   baseline: 'FASTXML';  
-  repository: 'github://Evref-BL/FASTXML:master';  
+  repository: 'github://Evref-BL/FAST-XML:main';  
   load.
 ```  
 
@@ -29,7 +29,7 @@ But for more details, you can have a look at this [blog-post][tree-sitter-blog].
 To use it in Pharo, you can check example below:
 
 ```smalltalk  
-res := FASTXML new parse:  '<hello>Welcome</hello>'. 
+res := FASTXMLParser new parse:  '<hello>Welcome</hello>'. 
 ```  
 
 ## NB
