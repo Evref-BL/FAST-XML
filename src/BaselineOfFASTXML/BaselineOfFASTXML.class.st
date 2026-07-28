@@ -47,7 +47,7 @@ BaselineOfFASTXML >> defineDependencies: spec [
 
 	spec baseline: 'TreeSitter' with: [
 		spec
-			loads: #( 'default' 'xml');
+			loads: #( 'moose' 'xml');
 			repository: 'github://Evref-BL/Pharo-Tree-Sitter:main/src' ]
 
 ]
