@@ -14,15 +14,16 @@ Trait {
 { #category : 'meta' }
 FASTXMLTEntityCreator classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TEntityCreator super: #Object>
 	<package: #'FAST-XML-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newAttDef [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLAttDef new
 ]
@@ -30,6 +31,7 @@ FASTXMLTEntityCreator >> newAttDef [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newAttValue [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLAttValue new
 ]
@@ -37,6 +39,7 @@ FASTXMLTEntityCreator >> newAttValue [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newAttlistDecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLAttlistDecl new
 ]
@@ -44,6 +47,7 @@ FASTXMLTEntityCreator >> newAttlistDecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newAttribute [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLAttribute new
 ]
@@ -51,6 +55,7 @@ FASTXMLTEntityCreator >> newAttribute [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newCDSect [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLCDSect new
 ]
@@ -58,6 +63,7 @@ FASTXMLTEntityCreator >> newCDSect [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newCDStart [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLCDStart new
 ]
@@ -65,6 +71,7 @@ FASTXMLTEntityCreator >> newCDStart [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newCData [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLCData new
 ]
@@ -72,6 +79,7 @@ FASTXMLTEntityCreator >> newCData [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newCharData [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLCharData new
 ]
@@ -79,6 +87,7 @@ FASTXMLTEntityCreator >> newCharData [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newCharRef [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLCharRef new
 ]
@@ -86,6 +95,7 @@ FASTXMLTEntityCreator >> newCharRef [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newChildren [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLChildren new
 ]
@@ -93,6 +103,7 @@ FASTXMLTEntityCreator >> newChildren [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newComment [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLComment new
 ]
@@ -100,6 +111,7 @@ FASTXMLTEntityCreator >> newComment [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newContent [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLContent new
 ]
@@ -107,6 +119,7 @@ FASTXMLTEntityCreator >> newContent [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newContentspec [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLContentspec new
 ]
@@ -114,6 +127,7 @@ FASTXMLTEntityCreator >> newContentspec [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newDefaultDecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLDefaultDecl new
 ]
@@ -121,6 +135,7 @@ FASTXMLTEntityCreator >> newDefaultDecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newDoctypedecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLDoctypedecl new
 ]
@@ -128,6 +143,7 @@ FASTXMLTEntityCreator >> newDoctypedecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newDocument [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLDocument new
 ]
@@ -135,6 +151,7 @@ FASTXMLTEntityCreator >> newDocument [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newERROR [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLERROR new
 ]
@@ -142,6 +159,7 @@ FASTXMLTEntityCreator >> newERROR [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newETag [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLETag new
 ]
@@ -149,6 +167,7 @@ FASTXMLTEntityCreator >> newETag [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newElement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLElement new
 ]
@@ -156,6 +175,7 @@ FASTXMLTEntityCreator >> newElement [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newElementdecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLElementdecl new
 ]
@@ -163,6 +183,7 @@ FASTXMLTEntityCreator >> newElementdecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newEmptyElemTag [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLEmptyElemTag new
 ]
@@ -170,6 +191,7 @@ FASTXMLTEntityCreator >> newEmptyElemTag [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newEncName [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLEncName new
 ]
@@ -177,6 +199,7 @@ FASTXMLTEntityCreator >> newEncName [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newEntityRef [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLEntityRef new
 ]
@@ -184,6 +207,7 @@ FASTXMLTEntityCreator >> newEntityRef [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newEntityValue [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLEntityValue new
 ]
@@ -191,6 +215,7 @@ FASTXMLTEntityCreator >> newEntityValue [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newEnumeration [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLEnumeration new
 ]
@@ -198,6 +223,7 @@ FASTXMLTEntityCreator >> newEnumeration [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newExternalID [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLExternalID new
 ]
@@ -205,6 +231,7 @@ FASTXMLTEntityCreator >> newExternalID [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newGEDecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLGEDecl new
 ]
@@ -212,6 +239,7 @@ FASTXMLTEntityCreator >> newGEDecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newMixed [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLMixed new
 ]
@@ -219,6 +247,7 @@ FASTXMLTEntityCreator >> newMixed [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newNDataDecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLNDataDecl new
 ]
@@ -226,6 +255,7 @@ FASTXMLTEntityCreator >> newNDataDecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newName [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLName new
 ]
@@ -233,6 +263,7 @@ FASTXMLTEntityCreator >> newName [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newNmtoken [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLNmtoken new
 ]
@@ -240,6 +271,7 @@ FASTXMLTEntityCreator >> newNmtoken [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newNotationDecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLNotationDecl new
 ]
@@ -247,6 +279,7 @@ FASTXMLTEntityCreator >> newNotationDecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newNotationType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLNotationType new
 ]
@@ -254,6 +287,7 @@ FASTXMLTEntityCreator >> newNotationType [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPEDecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPEDecl new
 ]
@@ -261,6 +295,7 @@ FASTXMLTEntityCreator >> newPEDecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPEReference [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPEReference new
 ]
@@ -268,6 +303,7 @@ FASTXMLTEntityCreator >> newPEReference [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPI [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPI new
 ]
@@ -275,6 +311,7 @@ FASTXMLTEntityCreator >> newPI [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPITarget [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPITarget new
 ]
@@ -282,6 +319,7 @@ FASTXMLTEntityCreator >> newPITarget [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newProlog [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLProlog new
 ]
@@ -289,6 +327,7 @@ FASTXMLTEntityCreator >> newProlog [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPseudoAtt [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPseudoAtt new
 ]
@@ -296,6 +335,7 @@ FASTXMLTEntityCreator >> newPseudoAtt [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPseudoAttValue [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPseudoAttValue new
 ]
@@ -303,6 +343,7 @@ FASTXMLTEntityCreator >> newPseudoAttValue [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPubidLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPubidLiteral new
 ]
@@ -310,6 +351,7 @@ FASTXMLTEntityCreator >> newPubidLiteral [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newPublicID [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLPublicID new
 ]
@@ -317,6 +359,7 @@ FASTXMLTEntityCreator >> newPublicID [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newSTag [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLSTag new
 ]
@@ -324,6 +367,7 @@ FASTXMLTEntityCreator >> newSTag [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newStringType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLStringType new
 ]
@@ -331,6 +375,7 @@ FASTXMLTEntityCreator >> newStringType [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newStyleSheetPI [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLStyleSheetPI new
 ]
@@ -338,6 +383,7 @@ FASTXMLTEntityCreator >> newStyleSheetPI [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newSystemLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLSystemLiteral new
 ]
@@ -345,6 +391,7 @@ FASTXMLTEntityCreator >> newSystemLiteral [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newTokenizedType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLTokenizedType new
 ]
@@ -352,6 +399,7 @@ FASTXMLTEntityCreator >> newTokenizedType [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newURI [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLURI new
 ]
@@ -359,6 +407,7 @@ FASTXMLTEntityCreator >> newURI [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newVersionNum [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLVersionNum new
 ]
@@ -366,6 +415,7 @@ FASTXMLTEntityCreator >> newVersionNum [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newXMLDecl [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLXMLDecl new
 ]
@@ -373,6 +423,7 @@ FASTXMLTEntityCreator >> newXMLDecl [
 { #category : 'entity creation' }
 FASTXMLTEntityCreator >> newXmlModelPI [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTXMLXmlModelPI new
 ]

@@ -2,6 +2,11 @@
 ## Relations
 ======================
 
+### Children
+| Relation | Origin | Opposite | Type | Comment |
+|---|
+| `root` | `FASTXMLDocument` | `documentRootOwner` | `FASTXMLElement` | |
+
 ### Other
 | Relation | Origin | Opposite | Type | Comment |
 |---|
@@ -23,6 +28,9 @@ Class {
 	#superclass : 'FASTXMLEntity',
 	#traits : '(FASTTEntity + FamixTHasImmediateSource withPrecedenceOf: FamixTHasImmediateSource)',
 	#classTraits : '(FASTTEntity classTrait + FamixTHasImmediateSource classTrait withPrecedenceOf: FamixTHasImmediateSource classTrait)',
+	#instVars : [
+		'#root => FMOne type: #FASTXMLElement opposite: #documentRootOwner'
+	],
 	#category : 'FAST-XML-Model-Entities',
 	#package : 'FAST-XML-Model',
 	#tag : 'Entities'
@@ -31,8 +39,25 @@ Class {
 { #category : 'meta' }
 FASTXMLDocument class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Document super: #FASTXMLEntity>
 	<package: #'FAST-XML-Model'>
 	<generated>
-	^ self
+]
+
+{ #category : 'accessing' }
+FASTXMLDocument >> root [
+	"Relation named: #root type: #FASTXMLElement opposite: #documentRootOwner"
+
+	<ignoreForCoverage>
+	<generated>
+	^ root
+]
+
+{ #category : 'accessing' }
+FASTXMLDocument >> root: anObject [
+
+	<ignoreForCoverage>
+	<generated>
+	root := anObject
 ]
