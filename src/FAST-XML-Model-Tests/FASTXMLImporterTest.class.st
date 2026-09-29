@@ -340,26 +340,6 @@ FASTXMLImporterTest >> testGeneratedAddressxml [
 ]
 
 { #category : 'tests' }
-FASTXMLImporterTest >> testGeneratedAttributeListDeclarations [
-	<generated>
-	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
-	Regenerate executing: 	self regenerateTest: #testGeneratedAttributeListDeclarations 	"
-
-	self parse: '<!ATTLIST termdef
-          id      ID      #REQUIRED
-          name    CDATA   #IMPLIED>
-<!ATTLIST list
-          type    (bullets|ordered|glossary)  "ordered">
-<!ATTLIST form
-          method  CDATA   #FIXED "POST">;'.
-
-	self assert: (fast allWithType: FASTXMLERROR) size equals: 3.
-	self assert: (fast allWithType: FASTXMLName) size equals: 15.
-	self assert: (fast allWithType: FASTXMLTokenizedType) size equals: 1.
-
-]
-
-{ #category : 'tests' }
 FASTXMLImporterTest >> testGeneratedCDATASection [
 	<generated>
 	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
@@ -622,50 +602,6 @@ FASTXMLImporterTest >> testGeneratedComment [
 ]
 
 { #category : 'tests' }
-FASTXMLImporterTest >> testGeneratedConditionalSections [
-	<generated>
-	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
-	Regenerate executing: 	self regenerateTest: #testGeneratedConditionalSections 	"
-
-	self parse: '<!ENTITY % draft ''INCLUDE'' >
-<!ENTITY % final ''IGNORE'' >
-<![%draft;[
-<!ELEMENT book (comments*, title, body, supplements?)>
-]]>
-<![%final;[
-<!ELEMENT book (title, body, supplements?)>
-]]>;'.
-
-	self assert: (fast allWithType: FASTXMLERROR) size equals: 6.
-	self assert: (fast allWithType: FASTXMLName) size equals: 19.
-
-]
-
-{ #category : 'tests' }
-FASTXMLImporterTest >> testGeneratedElementDeclarations [
-	<generated>
-	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
-	Regenerate executing: 	self regenerateTest: #testGeneratedElementDeclarations 	"
-
-	self parse: '<!ELEMENT br EMPTY>
-<!ELEMENT p (#PCDATA|emph)* >
-<!ELEMENT %name.para; %content.para; >
-<!ELEMENT container ANY>
-
-<!ELEMENT spec (front, body, back?)>
-<!ELEMENT div1 (head, (p | list | note)*, div2*)>
-<!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>
-
-<!ELEMENT p (#PCDATA|a|ul|b|i|em)*>
-<!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >
-<!ELEMENT b (#PCDATA)>;'.
-
-	self assert: (fast allWithType: FASTXMLERROR) size equals: 10.
-	self assert: (fast allWithType: FASTXMLName) size equals: 33.
-
-]
-
-{ #category : 'tests' }
 FASTXMLImporterTest >> testGeneratedEmptyCDATA7 [
 	<generated>
 	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
@@ -788,30 +724,6 @@ FASTXMLImporterTest >> testGeneratedEmptyCDATA7 [
 				stack pop.
 			stack pop.
 		self assert: self topEntity source equals: '<field name="foo" type="text"><![CDATA[]]></field>;'
-]
-
-{ #category : 'tests' }
-FASTXMLImporterTest >> testGeneratedEntityDeclarations [
-	<generated>
-	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
-	Regenerate executing: 	self regenerateTest: #testGeneratedEntityDeclarations 	"
-
-	self parse: '<!ENTITY Pub-Status "This is a pre-release of the
-  specification.">
-
-<!ENTITY open-hatch
-         SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
-<!ENTITY open-hatch
-         PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN"
-         "http://www.textuality.com/boilerplate/OpenHatch.xml">
-<!ENTITY hatch-pic
-         SYSTEM "../grafix/OpenHatch.gif"
-         NDATA gif >;'.
-
-	self assert: (fast allWithType: FASTXMLERROR) size equals: 4.
-	self assert: (fast allWithType: FASTXMLName) size equals: 31.
-	self assert: (fast allWithType: FASTXMLNmtoken) size equals: 1.
-
 ]
 
 { #category : 'tests' }
@@ -2881,6 +2793,316 @@ FASTXMLImporterTest >> testGeneratedXMLStylesheet [
 ]
 
 { #category : 'tests' }
+FASTXMLImporterTest >> testParseAttributeListDeclarations [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testParseAttributeListDeclarations 	"
+
+	self parse: '<!DOCTYPE doc [
+  <!ATTLIST termdef
+    id ID #REQUIRED
+    name CDATA #IMPLIED>
+  <!ATTLIST list
+    type (bullets|ordered|glossary) "ordered">
+  <!ATTLIST form
+    method CDATA #FIXED "POST">
+]>
+<doc></doc>'.
+
+	self assert: (fast allWithType: FASTXMLAttDef) size equals: 4.
+	self assert: (fast allWithType: FASTXMLAttValue) size equals: 2.
+	self assert: (fast allWithType: FASTXMLAttlistDecl) size equals: 3.
+	self assert: (fast allWithType: FASTXMLDefaultDecl) size equals: 4.
+	self assert: (fast allWithType: FASTXMLDoctypedecl) size equals: 1.
+	self assert: (fast allWithType: FASTXMLDocument) size equals: 1.
+	self assert: (fast allWithType: FASTXMLETag) size equals: 1.
+	self assert: (fast allWithType: FASTXMLElement) size equals: 1.
+	self assert: (fast allWithType: FASTXMLEnumeration) size equals: 1.
+	self assert: (fast allWithType: FASTXMLName) size equals: 10.
+	self assert: (fast allWithType: FASTXMLNmtoken) size equals: 3.
+	self assert: (fast allWithType: FASTXMLProlog) size equals: 1.
+	self assert: (fast allWithType: FASTXMLSTag) size equals: 1.
+	self assert: (fast allWithType: FASTXMLStringType) size equals: 2.
+	self assert: (fast allWithType: FASTXMLTokenizedType) size equals: 1.
+
+	stack push: fast rootEntities anyOne.
+	self assert: self topEntity sourceCode equals: '<!DOCTYPE doc [
+  <!ATTLIST termdef
+    id ID #REQUIRED
+    name CDATA #IMPLIED>
+  <!ATTLIST list
+    type (bullets|ordered|glossary) "ordered">
+  <!ATTLIST form
+    method CDATA #FIXED "POST">
+]>
+<doc></doc>' withPlatformLineEndings.
+	self assert: (self topEntity isOfType: FASTXMLDocument).
+	self assert: (self topEntity isOfType: FamixTHasImmediateSource).
+	self assert: (self topEntity isOfType: FamixTSourceAnchor).
+	
+	"Testing value of multivalued relation genericChildren"
+	self assert: self topEntity genericChildren size equals: 1.
+	
+		stack push: (stack top genericChildren at: 1).
+		self assert: self topEntity sourceCode equals: '<!DOCTYPE doc [
+  <!ATTLIST termdef
+    id ID #REQUIRED
+    name CDATA #IMPLIED>
+  <!ATTLIST list
+    type (bullets|ordered|glossary) "ordered">
+  <!ATTLIST form
+    method CDATA #FIXED "POST">
+]>
+' withPlatformLineEndings.
+		self assert: (self topEntity isOfType: FASTXMLProlog).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 1.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: '<!DOCTYPE doc [
+  <!ATTLIST termdef
+    id ID #REQUIRED
+    name CDATA #IMPLIED>
+  <!ATTLIST list
+    type (bullets|ordered|glossary) "ordered">
+  <!ATTLIST form
+    method CDATA #FIXED "POST">
+]>' withPlatformLineEndings.
+			self assert: (self topEntity isOfType: FASTXMLDoctypedecl).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 4.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'doc'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 2).
+				self assert: self topEntity sourceCode equals: '<!ATTLIST termdef
+    id ID #REQUIRED
+    name CDATA #IMPLIED>' withPlatformLineEndings.
+				self assert: (self topEntity isOfType: FASTXMLAttlistDecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 3.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'termdef'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '
+    id ID #REQUIRED' withPlatformLineEndings.
+					self assert: (self topEntity isOfType: FASTXMLAttDef).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 3.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'id'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: 'ID'.
+						self assert: (self topEntity isOfType: FASTXMLTokenizedType).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 3).
+						self assert: self topEntity sourceCode equals: '#REQUIRED'.
+						self assert: (self topEntity isOfType: FASTXMLDefaultDecl).
+						stack pop.
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 3).
+					self assert: self topEntity sourceCode equals: '
+    name CDATA #IMPLIED' withPlatformLineEndings.
+					self assert: (self topEntity isOfType: FASTXMLAttDef).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 3.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'name'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: 'CDATA'.
+						self assert: (self topEntity isOfType: FASTXMLStringType).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 3).
+						self assert: self topEntity sourceCode equals: '#IMPLIED'.
+						self assert: (self topEntity isOfType: FASTXMLDefaultDecl).
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 3).
+				self assert: self topEntity sourceCode equals: '<!ATTLIST list
+    type (bullets|ordered|glossary) "ordered">' withPlatformLineEndings.
+				self assert: (self topEntity isOfType: FASTXMLAttlistDecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'list'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '
+    type (bullets|ordered|glossary) "ordered"' withPlatformLineEndings.
+					self assert: (self topEntity isOfType: FASTXMLAttDef).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 3.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'type'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: '(bullets|ordered|glossary)'.
+						self assert: (self topEntity isOfType: FASTXMLEnumeration).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 3.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: 'bullets'.
+							self assert: (self topEntity isOfType: FASTXMLNmtoken).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 2).
+							self assert: self topEntity sourceCode equals: 'ordered'.
+							self assert: (self topEntity isOfType: FASTXMLNmtoken).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 3).
+							self assert: self topEntity sourceCode equals: 'glossary'.
+							self assert: (self topEntity isOfType: FASTXMLNmtoken).
+							stack pop.
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 3).
+						self assert: self topEntity sourceCode equals: '"ordered"'.
+						self assert: (self topEntity isOfType: FASTXMLDefaultDecl).
+						
+						"Testing value of monovalue relation childrenNode"
+						self assert: self topEntity childrenNode isNotNil.
+
+							stack push: self topEntity childrenNode.
+							self assert: self topEntity sourceCode equals: '"ordered"'.
+							self assert: (self topEntity isOfType: FASTXMLAttValue).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 4).
+				self assert: self topEntity sourceCode equals: '<!ATTLIST form
+    method CDATA #FIXED "POST">' withPlatformLineEndings.
+				self assert: (self topEntity isOfType: FASTXMLAttlistDecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'form'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '
+    method CDATA #FIXED "POST"' withPlatformLineEndings.
+					self assert: (self topEntity isOfType: FASTXMLAttDef).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 3.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'method'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: 'CDATA'.
+						self assert: (self topEntity isOfType: FASTXMLStringType).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 3).
+						self assert: self topEntity sourceCode equals: '#FIXED "POST"'.
+						self assert: (self topEntity isOfType: FASTXMLDefaultDecl).
+						
+						"Testing value of monovalue relation childrenNode"
+						self assert: self topEntity childrenNode isNotNil.
+
+							stack push: self topEntity childrenNode.
+							self assert: self topEntity sourceCode equals: '"POST"'.
+							self assert: (self topEntity isOfType: FASTXMLAttValue).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			stack pop.
+		stack pop.
+	
+	"Testing value of monovalue relation root"
+	self assert: self topEntity root isNotNil.
+
+		stack push: self topEntity root.
+		self assert: self topEntity sourceCode equals: '<doc></doc>'.
+		self assert: (self topEntity isOfType: FASTXMLElement).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 2.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: '<doc>'.
+			self assert: (self topEntity isOfType: FASTXMLSTag).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 1.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'doc'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			stack pop.
+		
+			stack push: (stack top childrenNodes at: 2).
+			self assert: self topEntity sourceCode equals: '</doc>'.
+			self assert: (self topEntity isOfType: FASTXMLETag).
+			
+			"Testing value of monovalue relation childrenNode"
+			self assert: self topEntity childrenNode isNotNil.
+
+				stack push: self topEntity childrenNode.
+				self assert: self topEntity sourceCode equals: 'doc'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			stack pop.
+		stack pop.
+	self assert: self topEntity source equals: '<!DOCTYPE doc [
+  <!ATTLIST termdef
+    id ID #REQUIRED
+    name CDATA #IMPLIED>
+  <!ATTLIST list
+    type (bullets|ordered|glossary) "ordered">
+  <!ATTLIST form
+    method CDATA #FIXED "POST">
+]>
+<doc></doc>' withPlatformLineEndings
+]
+
+{ #category : 'tests' }
 FASTXMLImporterTest >> testParseBookStoredtd [
 	<generated>
 	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
@@ -3362,10 +3584,10 @@ FASTXMLImporterTest >> testParseBookStoredtd [
 ]
 
 { #category : 'tests' }
-FASTXMLImporterTest >> testParseDoctypeWithConditionalSections [
+FASTXMLImporterTest >> testParseConditionalSections [
 	<generated>
 	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
-	Regenerate executing: 	self regenerateTest: #testParseDoctypeWithConditionalSections 	"
+	Regenerate executing: 	self regenerateTest: #testParseConditionalSections 	"
 
 	self parse: '<!DOCTYPE book [
   <!ENTITY % draft ''INCLUDE'' >
@@ -3558,6 +3780,938 @@ FASTXMLImporterTest >> testParseDoctypeWithConditionalSections [
   <!ELEMENT book (comments*, title, body, supplements?)>
 ]>
 <book></book>' withPlatformLineEndings
+]
+
+{ #category : 'tests' }
+FASTXMLImporterTest >> testParseElementDeclarations [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testParseElementDeclarations 	"
+
+	self parse: '<!DOCTYPE spec [
+  <!ELEMENT br EMPTY>
+  <!ELEMENT p (#PCDATA|emph)* >
+  <!ELEMENT %name.para; %content.para; >
+  <!ELEMENT container ANY>
+  <!ELEMENT spec (front, body, back?)>
+  <!ELEMENT div1 (head, (p | list | note)*, div2*)>
+  <!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>
+  <!ELEMENT p (#PCDATA|a|ul|b|i|em)*>
+  <!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >
+  <!ELEMENT b (#PCDATA)>
+]>
+<spec>
+  <front/>
+  <body></body>
+</spec>'.
+
+	self assert: (fast allWithType: FASTXMLCharData) size equals: 3.
+	self assert: (fast allWithType: FASTXMLChildren) size equals: 3.
+	self assert: (fast allWithType: FASTXMLContent) size equals: 1.
+	self assert: (fast allWithType: FASTXMLContentspec) size equals: 10.
+	self assert: (fast allWithType: FASTXMLDoctypedecl) size equals: 1.
+	self assert: (fast allWithType: FASTXMLDocument) size equals: 1.
+	self assert: (fast allWithType: FASTXMLETag) size equals: 2.
+	self assert: (fast allWithType: FASTXMLElement) size equals: 3.
+	self assert: (fast allWithType: FASTXMLElementdecl) size equals: 10.
+	self assert: (fast allWithType: FASTXMLEmptyElemTag) size equals: 1.
+	self assert: (fast allWithType: FASTXMLMixed) size equals: 4.
+	self assert: (fast allWithType: FASTXMLName) size equals: 37.
+	self assert: (fast allWithType: FASTXMLPEReference) size equals: 8.
+	self assert: (fast allWithType: FASTXMLProlog) size equals: 1.
+	self assert: (fast allWithType: FASTXMLSTag) size equals: 2.
+
+	stack push: fast rootEntities anyOne.
+	self assert: self topEntity sourceCode equals: '<!DOCTYPE spec [
+  <!ELEMENT br EMPTY>
+  <!ELEMENT p (#PCDATA|emph)* >
+  <!ELEMENT %name.para; %content.para; >
+  <!ELEMENT container ANY>
+  <!ELEMENT spec (front, body, back?)>
+  <!ELEMENT div1 (head, (p | list | note)*, div2*)>
+  <!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>
+  <!ELEMENT p (#PCDATA|a|ul|b|i|em)*>
+  <!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >
+  <!ELEMENT b (#PCDATA)>
+]>
+<spec>
+  <front/>
+  <body></body>
+</spec>' withPlatformLineEndings.
+	self assert: (self topEntity isOfType: FASTXMLDocument).
+	self assert: (self topEntity isOfType: FamixTHasImmediateSource).
+	self assert: (self topEntity isOfType: FamixTSourceAnchor).
+	
+	"Testing value of multivalued relation genericChildren"
+	self assert: self topEntity genericChildren size equals: 1.
+	
+		stack push: (stack top genericChildren at: 1).
+		self assert: self topEntity sourceCode equals: '<!DOCTYPE spec [
+  <!ELEMENT br EMPTY>
+  <!ELEMENT p (#PCDATA|emph)* >
+  <!ELEMENT %name.para; %content.para; >
+  <!ELEMENT container ANY>
+  <!ELEMENT spec (front, body, back?)>
+  <!ELEMENT div1 (head, (p | list | note)*, div2*)>
+  <!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>
+  <!ELEMENT p (#PCDATA|a|ul|b|i|em)*>
+  <!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >
+  <!ELEMENT b (#PCDATA)>
+]>
+' withPlatformLineEndings.
+		self assert: (self topEntity isOfType: FASTXMLProlog).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 1.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: '<!DOCTYPE spec [
+  <!ELEMENT br EMPTY>
+  <!ELEMENT p (#PCDATA|emph)* >
+  <!ELEMENT %name.para; %content.para; >
+  <!ELEMENT container ANY>
+  <!ELEMENT spec (front, body, back?)>
+  <!ELEMENT div1 (head, (p | list | note)*, div2*)>
+  <!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>
+  <!ELEMENT p (#PCDATA|a|ul|b|i|em)*>
+  <!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >
+  <!ELEMENT b (#PCDATA)>
+]>' withPlatformLineEndings.
+			self assert: (self topEntity isOfType: FASTXMLDoctypedecl).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 11.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'spec'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 2).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT br EMPTY>'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'br'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: 'EMPTY'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 3).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT p (#PCDATA|emph)* >'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'p'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '(#PCDATA|emph)*'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '(#PCDATA|emph)*'.
+						self assert: (self topEntity isOfType: FASTXMLMixed).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 1.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: 'emph'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 4).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT %name.para; %content.para; >'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: '%name.para;'.
+					self assert: (self topEntity isOfType: FASTXMLPEReference).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: 'name.para'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '%content.para;'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '%content.para;'.
+						self assert: (self topEntity isOfType: FASTXMLPEReference).
+						
+						"Testing value of monovalue relation childrenNode"
+						self assert: self topEntity childrenNode isNotNil.
+
+							stack push: self topEntity childrenNode.
+							self assert: self topEntity sourceCode equals: 'content.para'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 5).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT container ANY>'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'container'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: 'ANY'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 6).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT spec (front, body, back?)>'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'spec'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '(front, body, back?)'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '(front, body, back?)'.
+						self assert: (self topEntity isOfType: FASTXMLChildren).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 3.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: 'front'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 2).
+							self assert: self topEntity sourceCode equals: 'body'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 3).
+							self assert: self topEntity sourceCode equals: 'back'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 7).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT div1 (head, (p | list | note)*, div2*)>'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'div1'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '(head, (p | list | note)*, div2*)'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '(head, (p | list | note)*, div2*)'.
+						self assert: (self topEntity isOfType: FASTXMLChildren).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 5.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: 'head'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 2).
+							self assert: self topEntity sourceCode equals: 'p'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 3).
+							self assert: self topEntity sourceCode equals: 'list'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 4).
+							self assert: self topEntity sourceCode equals: 'note'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 5).
+							self assert: self topEntity sourceCode equals: 'div2'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 8).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'dictionary-body'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '(%div.mix; | %dict.mix;)*'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '(%div.mix; | %dict.mix;)*'.
+						self assert: (self topEntity isOfType: FASTXMLChildren).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 2.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: '%div.mix;'.
+							self assert: (self topEntity isOfType: FASTXMLPEReference).
+							
+							"Testing value of monovalue relation childrenNode"
+							self assert: self topEntity childrenNode isNotNil.
+
+								stack push: self topEntity childrenNode.
+								self assert: self topEntity sourceCode equals: 'div.mix'.
+								self assert: (self topEntity isOfType: FASTXMLName).
+								stack pop.
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 2).
+							self assert: self topEntity sourceCode equals: '%dict.mix;'.
+							self assert: (self topEntity isOfType: FASTXMLPEReference).
+							
+							"Testing value of monovalue relation childrenNode"
+							self assert: self topEntity childrenNode isNotNil.
+
+								stack push: self topEntity childrenNode.
+								self assert: self topEntity sourceCode equals: 'dict.mix'.
+								self assert: (self topEntity isOfType: FASTXMLName).
+								stack pop.
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 9).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT p (#PCDATA|a|ul|b|i|em)*>'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'p'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '(#PCDATA|a|ul|b|i|em)*'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '(#PCDATA|a|ul|b|i|em)*'.
+						self assert: (self topEntity isOfType: FASTXMLMixed).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 5.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: 'a'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 2).
+							self assert: self topEntity sourceCode equals: 'ul'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 3).
+							self assert: self topEntity sourceCode equals: 'b'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 4).
+							self assert: self topEntity sourceCode equals: 'i'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 5).
+							self assert: self topEntity sourceCode equals: 'em'.
+							self assert: (self topEntity isOfType: FASTXMLName).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 10).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'p'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '(#PCDATA | %font; | %phrase; | %special; | %form;)*'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '(#PCDATA | %font; | %phrase; | %special; | %form;)*'.
+						self assert: (self topEntity isOfType: FASTXMLMixed).
+						
+						"Testing value of multivalued relation childrenNodes"
+						self assert: self topEntity childrenNodes size equals: 4.
+						
+							stack push: (stack top childrenNodes at: 1).
+							self assert: self topEntity sourceCode equals: '%font;'.
+							self assert: (self topEntity isOfType: FASTXMLPEReference).
+							
+							"Testing value of monovalue relation childrenNode"
+							self assert: self topEntity childrenNode isNotNil.
+
+								stack push: self topEntity childrenNode.
+								self assert: self topEntity sourceCode equals: 'font'.
+								self assert: (self topEntity isOfType: FASTXMLName).
+								stack pop.
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 2).
+							self assert: self topEntity sourceCode equals: '%phrase;'.
+							self assert: (self topEntity isOfType: FASTXMLPEReference).
+							
+							"Testing value of monovalue relation childrenNode"
+							self assert: self topEntity childrenNode isNotNil.
+
+								stack push: self topEntity childrenNode.
+								self assert: self topEntity sourceCode equals: 'phrase'.
+								self assert: (self topEntity isOfType: FASTXMLName).
+								stack pop.
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 3).
+							self assert: self topEntity sourceCode equals: '%special;'.
+							self assert: (self topEntity isOfType: FASTXMLPEReference).
+							
+							"Testing value of monovalue relation childrenNode"
+							self assert: self topEntity childrenNode isNotNil.
+
+								stack push: self topEntity childrenNode.
+								self assert: self topEntity sourceCode equals: 'special'.
+								self assert: (self topEntity isOfType: FASTXMLName).
+								stack pop.
+							stack pop.
+						
+							stack push: (stack top childrenNodes at: 4).
+							self assert: self topEntity sourceCode equals: '%form;'.
+							self assert: (self topEntity isOfType: FASTXMLPEReference).
+							
+							"Testing value of monovalue relation childrenNode"
+							self assert: self topEntity childrenNode isNotNil.
+
+								stack push: self topEntity childrenNode.
+								self assert: self topEntity sourceCode equals: 'form'.
+								self assert: (self topEntity isOfType: FASTXMLName).
+								stack pop.
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 11).
+				self assert: self topEntity sourceCode equals: '<!ELEMENT b (#PCDATA)>'.
+				self assert: (self topEntity isOfType: FASTXMLElementdecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'b'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '(#PCDATA)'.
+					self assert: (self topEntity isOfType: FASTXMLContentspec).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: '(#PCDATA)'.
+						self assert: (self topEntity isOfType: FASTXMLMixed).
+						stack pop.
+					stack pop.
+				stack pop.
+			stack pop.
+		stack pop.
+	
+	"Testing value of monovalue relation root"
+	self assert: self topEntity root isNotNil.
+
+		stack push: self topEntity root.
+		self assert: self topEntity sourceCode equals: '<spec>
+  <front/>
+  <body></body>
+</spec>' withPlatformLineEndings.
+		self assert: (self topEntity isOfType: FASTXMLElement).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 3.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: '<spec>'.
+			self assert: (self topEntity isOfType: FASTXMLSTag).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 1.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'spec'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			stack pop.
+		
+			stack push: (stack top childrenNodes at: 2).
+			self assert: self topEntity sourceCode equals: '
+  <front/>
+  <body></body>
+' withPlatformLineEndings.
+			self assert: (self topEntity isOfType: FASTXMLContent).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 5.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: '
+  ' withPlatformLineEndings.
+				self assert: (self topEntity isOfType: FASTXMLCharData).
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 2).
+				self assert: self topEntity sourceCode equals: '<front/>'.
+				self assert: (self topEntity isOfType: FASTXMLElement).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 1.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: '<front/>'.
+					self assert: (self topEntity isOfType: FASTXMLEmptyElemTag).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 1.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'front'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 3).
+				self assert: self topEntity sourceCode equals: '
+  ' withPlatformLineEndings.
+				self assert: (self topEntity isOfType: FASTXMLCharData).
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 4).
+				self assert: self topEntity sourceCode equals: '<body></body>'.
+				self assert: (self topEntity isOfType: FASTXMLElement).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: '<body>'.
+					self assert: (self topEntity isOfType: FASTXMLSTag).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 1.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: 'body'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '</body>'.
+					self assert: (self topEntity isOfType: FASTXMLETag).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: 'body'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 5).
+				self assert: self topEntity sourceCode trimBoth equals: '' trimBoth.
+				self assert: (self topEntity isOfType: FASTXMLCharData).
+				stack pop.
+			stack pop.
+		
+			stack push: (stack top childrenNodes at: 3).
+			self assert: self topEntity sourceCode equals: '</spec>'.
+			self assert: (self topEntity isOfType: FASTXMLETag).
+			
+			"Testing value of monovalue relation childrenNode"
+			self assert: self topEntity childrenNode isNotNil.
+
+				stack push: self topEntity childrenNode.
+				self assert: self topEntity sourceCode equals: 'spec'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			stack pop.
+		stack pop.
+	self assert: self topEntity source equals: '<!DOCTYPE spec [
+  <!ELEMENT br EMPTY>
+  <!ELEMENT p (#PCDATA|emph)* >
+  <!ELEMENT %name.para; %content.para; >
+  <!ELEMENT container ANY>
+  <!ELEMENT spec (front, body, back?)>
+  <!ELEMENT div1 (head, (p | list | note)*, div2*)>
+  <!ELEMENT dictionary-body (%div.mix; | %dict.mix;)*>
+  <!ELEMENT p (#PCDATA|a|ul|b|i|em)*>
+  <!ELEMENT p (#PCDATA | %font; | %phrase; | %special; | %form;)* >
+  <!ELEMENT b (#PCDATA)>
+]>
+<spec>
+  <front/>
+  <body></body>
+</spec>' withPlatformLineEndings
+]
+
+{ #category : 'tests' }
+FASTXMLImporterTest >> testParseEntityDeclarations [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testParseEntityDeclarations 	"
+
+	self parse: '<!DOCTYPE doc [
+  <!ENTITY Pub-Status "This is a pre-release of the  specification.">
+  <!ENTITY open-hatch SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY open-hatch PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN" "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY hatch-pic SYSTEM "../grafix/OpenHatch.gif" NDATA gif>
+]>
+<doc></doc>'.
+
+	self assert: (fast allWithType: FASTXMLDoctypedecl) size equals: 1.
+	self assert: (fast allWithType: FASTXMLDocument) size equals: 1.
+	self assert: (fast allWithType: FASTXMLETag) size equals: 1.
+	self assert: (fast allWithType: FASTXMLElement) size equals: 1.
+	self assert: (fast allWithType: FASTXMLEntityValue) size equals: 1.
+	self assert: (fast allWithType: FASTXMLExternalID) size equals: 3.
+	self assert: (fast allWithType: FASTXMLGEDecl) size equals: 4.
+	self assert: (fast allWithType: FASTXMLNDataDecl) size equals: 1.
+	self assert: (fast allWithType: FASTXMLName) size equals: 8.
+	self assert: (fast allWithType: FASTXMLProlog) size equals: 1.
+	self assert: (fast allWithType: FASTXMLPubidLiteral) size equals: 1.
+	self assert: (fast allWithType: FASTXMLSTag) size equals: 1.
+	self assert: (fast allWithType: FASTXMLSystemLiteral) size equals: 3.
+	self assert: (fast allWithType: FASTXMLURI) size equals: 3.
+
+	stack push: fast rootEntities anyOne.
+	self assert: self topEntity sourceCode equals: '<!DOCTYPE doc [
+  <!ENTITY Pub-Status "This is a pre-release of the  specification.">
+  <!ENTITY open-hatch SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY open-hatch PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN" "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY hatch-pic SYSTEM "../grafix/OpenHatch.gif" NDATA gif>
+]>
+<doc></doc>' withPlatformLineEndings.
+	self assert: (self topEntity isOfType: FASTXMLDocument).
+	self assert: (self topEntity isOfType: FamixTHasImmediateSource).
+	self assert: (self topEntity isOfType: FamixTSourceAnchor).
+	
+	"Testing value of multivalued relation genericChildren"
+	self assert: self topEntity genericChildren size equals: 1.
+	
+		stack push: (stack top genericChildren at: 1).
+		self assert: self topEntity sourceCode equals: '<!DOCTYPE doc [
+  <!ENTITY Pub-Status "This is a pre-release of the  specification.">
+  <!ENTITY open-hatch SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY open-hatch PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN" "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY hatch-pic SYSTEM "../grafix/OpenHatch.gif" NDATA gif>
+]>
+' withPlatformLineEndings.
+		self assert: (self topEntity isOfType: FASTXMLProlog).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 1.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: '<!DOCTYPE doc [
+  <!ENTITY Pub-Status "This is a pre-release of the  specification.">
+  <!ENTITY open-hatch SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY open-hatch PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN" "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY hatch-pic SYSTEM "../grafix/OpenHatch.gif" NDATA gif>
+]>' withPlatformLineEndings.
+			self assert: (self topEntity isOfType: FASTXMLDoctypedecl).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 5.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'doc'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 2).
+				self assert: self topEntity sourceCode equals: '<!ENTITY Pub-Status "This is a pre-release of the  specification.">'.
+				self assert: (self topEntity isOfType: FASTXMLGEDecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'Pub-Status'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: '"This is a pre-release of the  specification."'.
+					self assert: (self topEntity isOfType: FASTXMLEntityValue).
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 3).
+				self assert: self topEntity sourceCode equals: '<!ENTITY open-hatch SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">'.
+				self assert: (self topEntity isOfType: FASTXMLGEDecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'open-hatch'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: 'SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml"'.
+					self assert: (self topEntity isOfType: FASTXMLExternalID).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 1.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: '"http://www.textuality.com/boilerplate/OpenHatch.xml"'.
+						self assert: (self topEntity isOfType: FASTXMLSystemLiteral).
+						
+						"Testing value of monovalue relation childrenNode"
+						self assert: self topEntity childrenNode isNotNil.
+
+							stack push: self topEntity childrenNode.
+							self assert: self topEntity sourceCode equals: 'http://www.textuality.com/boilerplate/OpenHatch.xml'.
+							self assert: (self topEntity isOfType: FASTXMLURI).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 4).
+				self assert: self topEntity sourceCode equals: '<!ENTITY open-hatch PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN" "http://www.textuality.com/boilerplate/OpenHatch.xml">'.
+				self assert: (self topEntity isOfType: FASTXMLGEDecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 2.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'open-hatch'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: 'PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN" "http://www.textuality.com/boilerplate/OpenHatch.xml"'.
+					self assert: (self topEntity isOfType: FASTXMLExternalID).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 2.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: '"-//Textuality//TEXT Standard open-hatch boilerplate//EN"'.
+						self assert: (self topEntity isOfType: FASTXMLPubidLiteral).
+						stack pop.
+					
+						stack push: (stack top childrenNodes at: 2).
+						self assert: self topEntity sourceCode equals: '"http://www.textuality.com/boilerplate/OpenHatch.xml"'.
+						self assert: (self topEntity isOfType: FASTXMLSystemLiteral).
+						
+						"Testing value of monovalue relation childrenNode"
+						self assert: self topEntity childrenNode isNotNil.
+
+							stack push: self topEntity childrenNode.
+							self assert: self topEntity sourceCode equals: 'http://www.textuality.com/boilerplate/OpenHatch.xml'.
+							self assert: (self topEntity isOfType: FASTXMLURI).
+							stack pop.
+						stack pop.
+					stack pop.
+				stack pop.
+			
+				stack push: (stack top childrenNodes at: 5).
+				self assert: self topEntity sourceCode equals: '<!ENTITY hatch-pic SYSTEM "../grafix/OpenHatch.gif" NDATA gif>'.
+				self assert: (self topEntity isOfType: FASTXMLGEDecl).
+				
+				"Testing value of multivalued relation childrenNodes"
+				self assert: self topEntity childrenNodes size equals: 3.
+				
+					stack push: (stack top childrenNodes at: 1).
+					self assert: self topEntity sourceCode equals: 'hatch-pic'.
+					self assert: (self topEntity isOfType: FASTXMLName).
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 2).
+					self assert: self topEntity sourceCode equals: 'SYSTEM "../grafix/OpenHatch.gif"'.
+					self assert: (self topEntity isOfType: FASTXMLExternalID).
+					
+					"Testing value of multivalued relation childrenNodes"
+					self assert: self topEntity childrenNodes size equals: 1.
+					
+						stack push: (stack top childrenNodes at: 1).
+						self assert: self topEntity sourceCode equals: '"../grafix/OpenHatch.gif"'.
+						self assert: (self topEntity isOfType: FASTXMLSystemLiteral).
+						
+						"Testing value of monovalue relation childrenNode"
+						self assert: self topEntity childrenNode isNotNil.
+
+							stack push: self topEntity childrenNode.
+							self assert: self topEntity sourceCode equals: '../grafix/OpenHatch.gif'.
+							self assert: (self topEntity isOfType: FASTXMLURI).
+							stack pop.
+						stack pop.
+					stack pop.
+				
+					stack push: (stack top childrenNodes at: 3).
+					self assert: self topEntity sourceCode equals: ' NDATA gif'.
+					self assert: (self topEntity isOfType: FASTXMLNDataDecl).
+					
+					"Testing value of monovalue relation childrenNode"
+					self assert: self topEntity childrenNode isNotNil.
+
+						stack push: self topEntity childrenNode.
+						self assert: self topEntity sourceCode equals: 'gif'.
+						self assert: (self topEntity isOfType: FASTXMLName).
+						stack pop.
+					stack pop.
+				stack pop.
+			stack pop.
+		stack pop.
+	
+	"Testing value of monovalue relation root"
+	self assert: self topEntity root isNotNil.
+
+		stack push: self topEntity root.
+		self assert: self topEntity sourceCode equals: '<doc></doc>'.
+		self assert: (self topEntity isOfType: FASTXMLElement).
+		
+		"Testing value of multivalued relation childrenNodes"
+		self assert: self topEntity childrenNodes size equals: 2.
+		
+			stack push: (stack top childrenNodes at: 1).
+			self assert: self topEntity sourceCode equals: '<doc>'.
+			self assert: (self topEntity isOfType: FASTXMLSTag).
+			
+			"Testing value of multivalued relation childrenNodes"
+			self assert: self topEntity childrenNodes size equals: 1.
+			
+				stack push: (stack top childrenNodes at: 1).
+				self assert: self topEntity sourceCode equals: 'doc'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			stack pop.
+		
+			stack push: (stack top childrenNodes at: 2).
+			self assert: self topEntity sourceCode equals: '</doc>'.
+			self assert: (self topEntity isOfType: FASTXMLETag).
+			
+			"Testing value of monovalue relation childrenNode"
+			self assert: self topEntity childrenNode isNotNil.
+
+				stack push: self topEntity childrenNode.
+				self assert: self topEntity sourceCode equals: 'doc'.
+				self assert: (self topEntity isOfType: FASTXMLName).
+				stack pop.
+			stack pop.
+		stack pop.
+	self assert: self topEntity source equals: '<!DOCTYPE doc [
+  <!ENTITY Pub-Status "This is a pre-release of the  specification.">
+  <!ENTITY open-hatch SYSTEM "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY open-hatch PUBLIC "-//Textuality//TEXT Standard open-hatch boilerplate//EN" "http://www.textuality.com/boilerplate/OpenHatch.xml">
+  <!ENTITY hatch-pic SYSTEM "../grafix/OpenHatch.gif" NDATA gif>
+]>
+<doc></doc>' withPlatformLineEndings
 ]
 
 { #category : 'tests' }
@@ -5339,4 +6493,9 @@ FASTXMLImporterTest >> testParseParameterEntityReferences [
     %local.catalog.attribs;>
 ]>
 <svg/>' withPlatformLineEndings
+]
+
+{ #category : 'as yet unclassified' }
+FASTXMLImporterTest >> topEntity [ 
+ ^ stack top 
 ]
