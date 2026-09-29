@@ -9,8 +9,8 @@ Class {
 { #category : 'meta' }
 FASTXMLPITarget class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #PITarget super: #FASTXMLEntity>
 	<package: #'FAST-XML-Model'>
 	<generated>
-	^ self
 ]

@@ -9,8 +9,8 @@ Class {
 { #category : 'meta' }
 FASTXMLEncName class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #EncName super: #FASTXMLEntity>
 	<package: #'FAST-XML-Model'>
 	<generated>
-	^ self
 ]

@@ -29,8 +29,8 @@ Class {
 { #category : 'meta' }
 FASTXMLERROR class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ERROR super: #FASTXMLEntity>
 	<package: #'FAST-XML-Model'>
 	<generated>
-	^ self
 ]
