@@ -1008,7 +1008,7 @@ FASTXMLImporterTest >> testGeneratedInvalidProcessingInstruction [
 	self assert: (fast allWithType: FASTXMLCharData) size equals: 1.
 	self assert: (fast allWithType: FASTXMLContent) size equals: 1.
 	self assert: (fast allWithType: FASTXMLDocument) size equals: 1.
-	self assert: (fast allWithType: FASTXMLERROR) size equals: 3.
+	self assert: (fast allWithType: FASTXMLERROR) size equals: 2.
 	self assert: (fast allWithType: FASTXMLETag) size equals: 1.
 	self assert: (fast allWithType: FASTXMLElement) size equals: 1.
 	self assert: (fast allWithType: FASTXMLName) size equals: 4.
@@ -1094,7 +1094,7 @@ FASTXMLImporterTest >> testGeneratedInvalidXMLDeclaration [
 <error/>;'.
 
 	self assert: (fast allWithType: FASTXMLDocument) size equals: 1.
-	self assert: (fast allWithType: FASTXMLERROR) size equals: 3.
+	self assert: (fast allWithType: FASTXMLERROR) size equals: 2.
 	self assert: (fast allWithType: FASTXMLElement) size equals: 1.
 	self assert: (fast allWithType: FASTXMLEmptyElemTag) size equals: 1.
 	self assert: (fast allWithType: FASTXMLName) size equals: 3.
