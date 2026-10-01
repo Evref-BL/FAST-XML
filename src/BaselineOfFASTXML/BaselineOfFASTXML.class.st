@@ -48,7 +48,7 @@ BaselineOfFASTXML >> defineDependencies: spec [
 	spec baseline: 'TreeSitter' with: [
 		spec
 			loads: #( 'moose' 'xml');
-			repository: 'github://Evref-BL/Pharo-Tree-Sitter:v.2.1/src' ]
+			repository: 'github://Evref-BL/Pharo-Tree-Sitter:main/src' ]
 
 ]
 
@@ -57,8 +57,7 @@ BaselineOfFASTXML >> defineGroups: spec [
 
 	spec
 		group: 'core'
-		with: #( 'FAST-XML-Model' 
-			   'FAST-XML-Model-Generator' );
+		with: #( 'FAST-XML-Model' 'FAST-XML-Model-Generator' 'FAST-XML-Model-Tests' );
 		group: 'tools' with: #( 'core' 'FAST-XML-Tools' )
 ]
 
@@ -69,7 +68,8 @@ BaselineOfFASTXML >> definePackages: spec [
 		package: 'FAST-XML-Model'
 		with: [ spec requires: #( 'FAST' ) ];
 		package: 'FAST-XML-Model-Generator'; 
-		package: 'FAST-XML-Tools'
+		package: 'FAST-XML-Tools'; 
+		package: 'FAST-XML-Model-Tests'
 		with: [ spec requires: #( 'TreeSitter' ) ].
 
 	"In case of no Famix loaded"
