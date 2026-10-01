@@ -9,8 +9,8 @@ Class {
 { #category : 'meta' }
 FASTXMLPubidLiteral class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #PubidLiteral super: #FASTXMLEntity>
 	<package: #'FAST-XML-Model'>
 	<generated>
-	^ self
 ]
