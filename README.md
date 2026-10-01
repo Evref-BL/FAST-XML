@@ -34,7 +34,7 @@ res := FASTXMLImporter new parse:  '<hello>Welcome</hello>'.
 
 ## NB
 
-The project is updated starting October 1 2026. It works on Moose 12+ (despite making the ci runs only for Moose 13, and this is because one of the tests is using a slot that is not defined in Moose 12, which makes the tests fail). The metamodel is complete following the description of tree siter xml original repo. 
+The project is updated starting October 1 2026. It works on Moose 12+ (despite making the ci runs only for Moose 13, and this is because one of the tests is using a slot that is not defined in Moose 12, which makes the tests fail). The metamodel is complete following the description of tree sitter xml original repo. 
 
 If you think an update is recommended or new feature is requested ... Your contribution is more than welcome. Happy coding with Pharo and XML :)
 
