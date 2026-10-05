@@ -1,6 +1,6 @@
 # FASTXML  
 
-[![CI](https://github.com/Evref-BL/Pharo-Tree-Sitter/actions/workflows/ci.yml/badge.svg)](https://github.com/Evref-BL/Pharo-Tree-Sitter/actions/workflows/ci.yml)
+[![CI](https://github.com/Evref-BL/FAST-XML/actions/workflows/ci.yml/badge.svg)](https://github.com/Evref-BL/FAST-XML/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Evref-BL/FAST-XML/badge.svg?branch=main)](https://coveralls.io/github/Evref-BL/FAST-XML?branch=main)
 
 FASTXML is a recently created project that integrates with Moose and leverages the Tree-Sitter parser to analyze XML source code in Pharo.  
