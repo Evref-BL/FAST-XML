@@ -8,6 +8,13 @@ Class {
 	#package : 'FAST-XML-Tools'
 }
 
+{ #category : 'accessing' }
+FASTXMLImporter class >> extensions [
+	"File extensions without the dot that the importer handles"
+
+	^ #( 'xml' )
+]
+
 { #category : 'initialization' }
 FASTXMLImporter >> deleteTreeSitterParser [
 
