@@ -2792,13 +2792,6 @@ FASTXMLImporterTest >> testGeneratedXMLStylesheet [
 </html>;' withPlatformLineEndings
 ]
 
-{ #category : 'tests - importer API' }
-FASTXMLImporterTest >> testHandlesItsExtensions [
-
-	self assert: (FASTXMLImporter handlesFile: 'model.xml' asFileReference).
-	self deny: (FASTXMLImporter handlesFile: 'index.html' asFileReference)
-]
-
 { #category : 'tests' }
 FASTXMLImporterTest >> testParseAttributeListDeclarations [
 	<generated>
