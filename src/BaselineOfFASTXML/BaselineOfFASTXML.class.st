@@ -31,25 +31,21 @@ BaselineOfFASTXML >> customProjectAttributes [
 BaselineOfFASTXML >> defineDependencies: spec [
 
 	spec baseline: 'FAST' with: [
-		spec
-			loads: #( 'default' );
-			repository: 'github://moosetechnology/FAST:v3/src' ].
-	spec
-		project: 'FASTTool'
-		copyFrom: 'FAST'
-		with: [ spec loads: #( 'core' 'tools' ) ].
-		
-	spec for: #NeedsMoose do: [
-		spec baseline: 'Famix' with: [
 			spec
-				loads: #( 'Core' 'Basic' );
-				repository: 'github://moosetechnology/Famix:development/src' ] ].
+				loads: #( 'default' );
+				repository: 'github://moosetechnology/FAST:v3/src' ].
+	spec project: 'FASTTool' copyFrom: 'FAST' with: [ spec loads: #( 'core' 'tools' ) ].
+
+	spec for: #NeedsMoose do: [
+			spec baseline: 'Famix' with: [
+					spec
+						loads: #( 'Core' 'Basic' );
+						repository: 'github://moosetechnology/Famix:development/src' ] ].
 
 	spec baseline: 'TreeSitter' with: [
-		spec
-			loads: #( 'moose' 'xml');
-			repository: 'github://Evref-BL/Pharo-Tree-Sitter:v3.2.0/src' ]
-
+			spec
+				loads: #( 'moose' 'xml' );
+				repository: 'github://Evref-BL/Pharo-Tree-Sitter:v3.3.1/src' ]
 ]
 
 { #category : 'baselines' }
